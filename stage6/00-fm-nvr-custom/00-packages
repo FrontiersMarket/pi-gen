@@ -1,0 +1,11 @@
+curl
+unzip
+git
+htop
+net-tools
+avahi-daemon
+samba
+fail2ban
+python3-pip
+# Add any other specific dependencies required by python-video-scripts
+# or for general NVR functionality.

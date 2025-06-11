@@ -1,0 +1,17 @@
+[Unit]
+Description=FrontiersMarket NVR First Boot Setup
+# Ensures this runs only once
+ConditionPathExists=!/opt/fm-nvr-setup-complete
+# Run after network is online and tailscale has had a chance to start
+After=network-online.target tailscale.service
+Wants=network-online.target tailscale.service
+
+[Service]
+Type=oneshot
+# The script path should match where 01-run.sh copies fm-nvr-setup.sh
+ExecStart=/opt/python-video-scripts/fm-nvr-setup.sh
+RemainAfterExit=yes
+StandardOutput=journal+console
+
+[Install]
+WantedBy=multi-user.target
